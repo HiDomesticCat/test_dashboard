@@ -1,0 +1,38 @@
+{
+  "name": "sentinel-fusion-backend",
+  "version": "0.1.0",
+  "description": "Sentinel Fusion Project - XDR analytics backend (demo with mock data, metrics API, real-time streaming)",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "lint": "eslint src --ext .js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.13",
+    "express": "^4.19.2",
+    "lodash": "^4.17.21",
+    "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-promise": "^6.2.0",
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "sentinel-fusion",
+    "xdr",
+    "dashboard",
+    "express",
+    "socket.io"
+  ],
+  "author": "SOC Engineering Demo",
+  "license": "MIT"
+}

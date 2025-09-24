@@ -1,0 +1,229 @@
+[
+  {
+    "@timestamp": "2025-09-23T22:14:55Z",
+    "source": {
+      "ip": "10.10.30.15",
+      "host": "db-prod-01",
+      "business_process": "Core Payment Service",
+      "locality": "private"
+    },
+    "destination": {
+      "ip": "185.125.190.59",
+      "port": 443,
+      "country": "RU",
+      "geo": {
+        "lat": 55.7558,
+        "lon": 37.6173
+      },
+      "locality": "public"
+    },
+    "network": {
+      "protocol": "tls",
+      "direction": "outbound",
+      "bytes": 985432,
+      "packets": 1421,
+      "tls": {
+        "certificate": {
+          "self_signed": true,
+          "issuer": "CN=data-dump.evil-domain.ru"
+        },
+        "ja3": "72a589da586844d7f0818ce684948eea"
+      }
+    },
+    "event": {
+      "category": "network",
+      "action": "data_exfiltration"
+    },
+    "tags": [
+      "ndr",
+      "c2",
+      "exfil",
+      "tls_self_signed"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T22:14:24Z",
+    "source": {
+      "ip": "10.10.30.15",
+      "host": "db-prod-01",
+      "business_process": "Core Payment Service",
+      "locality": "private"
+    },
+    "destination": {
+      "ip": "8.8.8.8",
+      "port": 53,
+      "country": "US",
+      "geo": {
+        "lat": 37.751,
+        "lon": -97.822
+      },
+      "locality": "public"
+    },
+    "network": {
+      "protocol": "dns",
+      "direction": "outbound",
+      "bytes": 10976,
+      "packets": 112,
+      "dns": {
+        "question": "data-dump.evil-domain.ru",
+        "type": "A",
+        "answers": [
+          "185.125.190.59"
+        ]
+      }
+    },
+    "event": {
+      "category": "network",
+      "action": "domain_lookup"
+    },
+    "tags": [
+      "ndr",
+      "dns_tunnel",
+      "c2_resolution"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T21:58:47Z",
+    "source": {
+      "ip": "172.20.14.22",
+      "host": "web-edge-02",
+      "business_process": "Digital Banking Portal",
+      "locality": "private"
+    },
+    "destination": {
+      "ip": "89.248.167.131",
+      "port": 8080,
+      "country": "NL",
+      "geo": {
+        "lat": 52.3676,
+        "lon": 4.9041
+      },
+      "locality": "public"
+    },
+    "network": {
+      "protocol": "http",
+      "direction": "outbound",
+      "bytes": 42112,
+      "packets": 145,
+      "http": {
+        "request": {
+          "method": "POST",
+          "path": "/upload.php",
+          "headers": {
+            "user-agent": "curl/7.68.0"
+          }
+        },
+        "response": {
+          "status_code": 200
+        }
+      }
+    },
+    "event": {
+      "category": "network",
+      "action": "suspicious_post"
+    },
+    "tags": [
+      "ndr",
+      "webshell",
+      "command_and_control"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T22:05:17Z",
+    "source": {
+      "ip": "10.55.10.12",
+      "host": "sap-app-01",
+      "business_process": "ERP Finance",
+      "locality": "private"
+    },
+    "destination": {
+      "ip": "10.55.10.99",
+      "port": 389,
+      "locality": "private"
+    },
+    "network": {
+      "protocol": "ldap",
+      "direction": "internal",
+      "bytes": 25384,
+      "packets": 76
+    },
+    "event": {
+      "category": "network",
+      "action": "credential_enumeration"
+    },
+    "tags": [
+      "ndr",
+      "credential_access",
+      "lateral_movement"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T22:02:22Z",
+    "source": {
+      "ip": "203.0.113.59",
+      "host": "unknown",
+      "locality": "public"
+    },
+    "destination": {
+      "ip": "172.21.5.7",
+      "host": "citrix-gw-01",
+      "business_process": "Remote Workforce Access",
+      "port": 443,
+      "locality": "private",
+      "country": "TW",
+      "geo": {
+        "lat": 25.0478,
+        "lon": 121.5319
+      }
+    },
+    "network": {
+      "protocol": "tls",
+      "direction": "inbound",
+      "bytes": 164829,
+      "packets": 389,
+      "tls": {
+        "session_resumed": false,
+        "cipher": "TLS_AES_128_GCM_SHA256"
+      }
+    },
+    "event": {
+      "category": "network",
+      "action": "bruteforce_login"
+    },
+    "tags": [
+      "ndr",
+      "remote_access",
+      "bruteforce"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T21:52:02Z",
+    "source": {
+      "ip": "10.77.30.25",
+      "host": "ml-research-03",
+      "business_process": "AI Research Platform",
+      "locality": "private"
+    },
+    "destination": {
+      "ip": "10.55.10.12",
+      "host": "sap-app-01",
+      "business_process": "ERP Finance",
+      "port": 1433,
+      "locality": "private"
+    },
+    "network": {
+      "protocol": "mssql",
+      "direction": "internal",
+      "bytes": 9456,
+      "packets": 38
+    },
+    "event": {
+      "category": "network",
+      "action": "lateral_discovery"
+    },
+    "tags": [
+      "ndr",
+      "internal_reconnaissance"
+    ]
+  }
+]

