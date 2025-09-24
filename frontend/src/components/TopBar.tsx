@@ -1,6 +1,5 @@
 import { Bell, Search, Sparkles } from "lucide-react";
 import { useInvestigationFilters } from "../hooks/useInvestigationFilters";
-import { formatDate } from "../lib/api";
 
 export function TopBar() {
   const { filters, setFilters } = useInvestigationFilters();

@@ -1,8 +1,8 @@
-import { useMemo } from "react";
+ import { useMemo } from "react";
 import { Globe2, Flame, Route, MapPinned } from "lucide-react";
 import ReactECharts from "echarts-for-react";
-import { useTimelineQuery, formatBytes, hashIpToCoords } from "../lib/api";
-import type { Dataset, TimelineEvent } from "../lib/api";
+import { useTimelineQuery, hashIpToCoords } from "../lib/api";
+import type { TimelineEvent } from "../lib/api";
 import { useInvestigationFilters } from "../hooks/useInvestigationFilters";
 import { SkeletonCard } from "./SkeletonCard";
 

@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import dayjs from "dayjs";
-import type { Dataset } from "./api.types"; // will create this file shortly
+import type { Dataset } from "./api.types";
+export type { Dataset } from "./api.types";
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:5050";
 
@@ -55,6 +56,7 @@ export type FlowRecord = {
   };
   destination: {
     ip: string;
+    business_process?: string;
     port?: number;
     country?: string;
     locality?: string;
